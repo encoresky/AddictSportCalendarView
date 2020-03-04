@@ -40,7 +40,6 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        System.out.println("onItemClick " + view);
         Calendar day = new GregorianCalendar();
         day.setTime((Date) adapterView.getItemAtPosition(position));
 
@@ -67,20 +66,17 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private void selectOneDay(View view, Calendar day) {
-        System.out.println("selectOneDay " + view);
         SelectedDay previousSelectedDay = mCalendarPageAdapter.getSelectedDay();
         TextView dayLabel = view.findViewById(R.id.dayLabel);
         View dayCell = view.findViewById(R.id.dayCell);
 
         if (isAnotherDaySelected(previousSelectedDay, day)) {
             selectDay(dayLabel, dayCell, day);
-            System.out.println("previousSelectedDay" + previousSelectedDay);
             reverseUnselectedColor(previousSelectedDay);
         }
     }
 
     private void selectManyDays(View view, Calendar day) {
-        System.out.println("selectManyDays " + view);
         TextView dayLabel = view.findViewById(R.id.dayLabel);
         View dayCell = view.findViewById(R.id.dayCell);
 
@@ -98,7 +94,6 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private void selectRange(View view, Calendar day) {
-        System.out.println("selectRange " + view);
         TextView dayLabel = view.findViewById(R.id.dayLabel);
         View dayCell = view.findViewById(R.id.dayCell);
 
@@ -122,13 +117,11 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private void clearAndSelectOne(TextView dayLabel, View dayCell, Calendar day) {
-        System.out.println("clearAndSelectOne " + dayCell);
         Stream.of(mCalendarPageAdapter.getSelectedDays()).forEach(selectedDay -> reverseUnselectedColor(selectedDay));
         selectDay(dayLabel, dayCell, day);
     }
 
     private void selectOneAndRange(TextView dayLabel, View dayCell, Calendar day) {
-        System.out.println("selectOneAndRange " + dayCell);
         SelectedDay previousSelectedDay = mCalendarPageAdapter.getSelectedDay();
 
         Stream.of(CalendarUtils.getDatesRange(previousSelectedDay.getCalendar(), day))
@@ -146,34 +139,28 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private void selectDay(TextView dayLabel, View dayCell, Calendar day) {
-        System.out.println("selectDay " + dayCell);
         DayColorsUtils.setSelectedDayColors(dayLabel, dayCell, mCalendarProperties);
         mCalendarPageAdapter.setSelectedDay(new SelectedDay(dayLabel, dayCell, day));
     }
 
     private void reverseUnselectedColor(SelectedDay selectedDay) {
-        System.out.println("reverseUnselectedColor " + selectedDay);
         DayColorsUtils.setCurrentMonthDayColors(selectedDay.getCalendar(), DateUtils.getCalendar(), (TextView) selectedDay.getView(), selectedDay.getViewCell(), mCalendarProperties);
     }
 
     private boolean isCurrentMonthDay(Calendar day) {
-        System.out.println("isCurrentMonthDay ");
         return day.get(Calendar.MONTH) == mPageMonth && isBetweenMinAndMax(day);
     }
 
     private boolean isActiveDay(Calendar day) {
-        System.out.println("isActiveDay");
         return !mCalendarProperties.getDisabledDays().contains(day);
     }
 
     private boolean isBetweenMinAndMax(Calendar day) {
-        System.out.println("isBetweenMinAndMax");
         return !((mCalendarProperties.getMinimumDate() != null && day.before(mCalendarProperties.getMinimumDate()))
                 || (mCalendarProperties.getMaximumDate() != null && day.after(mCalendarProperties.getMaximumDate())));
     }
 
     private boolean isOutOfMaxRange(Calendar firstDay, Calendar lastDay) {
-        System.out.println("isOutOfMaxRange");
 
         // Number of selected days plus one last day
         int numberOfSelectedDays = CalendarUtils.getDatesRange(firstDay, lastDay).size() + 1;
@@ -183,15 +170,11 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private boolean isAnotherDaySelected(SelectedDay selectedDay, Calendar day) {
-        System.out.println("isAnotherDaySelected " + selectedDay);
-
         return selectedDay != null && !day.equals(selectedDay.getCalendar())
                 && isCurrentMonthDay(day) && isActiveDay(day);
     }
 
     private void onClick(Calendar day) {
-        System.out.println("onClick");
-
         if (mCalendarProperties.getEventDays() == null) {
             createEmptyEventDay(day);
             return;
@@ -204,15 +187,11 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
     }
 
     private void createEmptyEventDay(Calendar day) {
-        System.out.println("createEmptyEventDay");
-
         EventDay eventDay = new EventDay(day);
         callOnClickListener(eventDay);
     }
 
     private void callOnClickListener(EventDay eventDay) {
-        System.out.println("callOnClickListener");
-
         boolean enabledDay = mCalendarProperties.getDisabledDays().contains(eventDay.getCalendar())
                 || !isBetweenMinAndMax(eventDay.getCalendar());
 

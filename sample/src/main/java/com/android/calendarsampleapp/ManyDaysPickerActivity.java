@@ -44,8 +44,6 @@ public class ManyDaysPickerActivity extends AppCompatActivity {
         Button getDateButton = (Button) findViewById(R.id.getDateButton);
         getDateButton.setOnClickListener(v -> {
             for (Calendar calendar : calendarView.getSelectedDates()) {
-                System.out.println(calendar.getTime().toString());
-
                 Toast.makeText(getApplicationContext(),
                         calendar.getTime().toString(),
                         Toast.LENGTH_SHORT).show();

@@ -31,7 +31,6 @@ public class DayColorsUtils {
         }
         textView.setTypeface(null, typeface);
         textView.setTextColor(textColor);
-        System.out.println("setDayColors");
         dayCell.setBackgroundResource(background);
     }
 
@@ -44,7 +43,6 @@ public class DayColorsUtils {
      * @param calendarProperties A resource of a selection background color
      */
     public static void setSelectedDayColors(TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setSelectedDayColors " + dayCell);
         setDayColors(dayLabel, dayCell, calendarProperties.getDaysLabelsColor(), Typeface.NORMAL, R.drawable.background_color_circle_selector);
         setDayBackgroundColor(dayCell, calendarProperties.getSelectionColor());
     }
@@ -61,7 +59,6 @@ public class DayColorsUtils {
      * @param calendarProperties A resource of a color used to mark today day
      */
     public static void setCurrentMonthDayColors(Calendar day, Calendar today, TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setCurrentMonthDayColors " + dayCell);
         if (today.equals(day)) {
             setTodayColors(dayLabel, dayCell, calendarProperties);
         } else if (EventDayUtils.isEventDayWithLabelColor(day, calendarProperties)) {
@@ -74,33 +71,28 @@ public class DayColorsUtils {
     }
 
     private static void setTodayColors(TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setTodayColors " + dayCell);
-        setDayColors(dayLabel, dayCell, calendarProperties.getTodayLabelColor(), Typeface.BOLD, R.drawable.background_transparent);
+        setDayColors(dayLabel, dayCell, calendarProperties.getTodayLabelColor(), Typeface.BOLD, R.drawable.background_color_circle_selector_today);
         // Sets custom background color for present
         if (calendarProperties.getTodayColor() != 0) {
-            setDayColors(dayLabel, dayCell, calendarProperties.getSelectionLabelColor(), Typeface.NORMAL, R.drawable.background_color_circle_selector);
+            setDayColors(dayLabel, dayCell, calendarProperties.getSelectionLabelColor(), Typeface.NORMAL, R.drawable.background_color_circle_selector_today);
             setDayBackgroundColor(dayCell, calendarProperties.getTodayColor());
         }
     }
 
     private static void setEventDayColors(Calendar day, TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setEventDayColors " + dayCell);
         EventDayUtils.getEventDayWithLabelColor(day, calendarProperties).executeIfPresent(eventDay ->
                 DayColorsUtils.setDayColors(dayLabel, dayCell, eventDay.getLabelColor(), Typeface.NORMAL, R.drawable.background_transparent));
     }
 
     private static void setHighlightedDayColors(TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setHighlightedDayColors " + dayCell);
         setDayColors(dayLabel, dayCell, calendarProperties.getHighlightedDaysLabelsColor(), Typeface.NORMAL, R.drawable.background_transparent);
     }
 
     private static void setNormalDayColors(TextView dayLabel, View dayCell, CalendarProperties calendarProperties) {
-        System.out.println("setNormalDayColors " + dayCell);
         setDayColors(dayLabel, dayCell, calendarProperties.getDaysLabelsColor(), Typeface.NORMAL, R.drawable.background_transparent);
     }
 
     private static void setDayBackgroundColor(View dayCell, int color) {
-        System.out.println("setDayBackgroundColor " + dayCell);
         dayCell.getBackground().setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
     }
 }

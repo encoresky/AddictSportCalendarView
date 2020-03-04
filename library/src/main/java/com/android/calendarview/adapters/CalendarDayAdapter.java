@@ -2,7 +2,6 @@ package com.android.calendarview.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,19 +73,14 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
     }
 
     private void setLabelColors(TextView dayLabel, View dayCell, Calendar day) {
-        System.out.println("setLabelColors " + dayCell);
         // Setting not current month day color
         if (!isCurrentMonthDay(day)) {
-            Log.e("setLabelColors: ", "!isCurrentMonthDay(day)");
-
             DayColorsUtils.setDayColors(dayLabel, dayCell, mCalendarProperties.getAnotherMonthsDaysLabelsColor(), Typeface.NORMAL, R.drawable.background_transparent);
             return;
         }
 
         // Setting view for all SelectedDays
         if (isSelectedDay(day)) {
-            Log.e("setLabelColors: ", "isSelectedDay(day)");
-
             Stream.of(mCalendarPageAdapter.getSelectedDays())
                     .filter(selectedDay -> selectedDay.getCalendar().equals(day))
                     .findFirst().ifPresent(selectedDay -> {
@@ -100,16 +94,12 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
 
         // Setting disabled days color
         if (!isActiveDay(day)) {
-            Log.e("setLabelColors: ", "!isActiveDay(day)");
-
             DayColorsUtils.setDayColors(dayLabel, dayCell, mCalendarProperties.getDisabledDaysLabelsColor(), Typeface.NORMAL, R.drawable.background_transparent);
             return;
         }
 
         // Setting custom label color for event day
         if (isEventDayWithLabelColor(day)) {
-            Log.e("setLabelColors: ", "isEventDayWithLabelColor(day)");
-
             DayColorsUtils.setCurrentMonthDayColors(day, mToday, dayLabel, dayCell, mCalendarProperties);
             return;
         }

@@ -17,12 +17,21 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
-
         List<EventDay> events = new ArrayList<>();
-
-
         Calendar calendar1 = Calendar.getInstance();
         calendar1.add(Calendar.DAY_OF_MONTH, 10);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 2);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 2);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 4);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 5);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 6);
+        events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
+        calendar1.add(Calendar.DAY_OF_MONTH, 7);
         events.add(new EventDay(calendar1, R.drawable.ic_event_indicator));
 
         CalendarView calendarView = findViewById(R.id.calendarView);

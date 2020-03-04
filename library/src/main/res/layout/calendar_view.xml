@@ -62,7 +62,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_monday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tuesdayLabel"
@@ -71,7 +74,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_tuesday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/wednesdayLabel"
@@ -80,7 +86,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_wednesday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/thursdayLabel"
@@ -89,7 +98,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_thursday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/fridayLabel"
@@ -98,7 +110,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_friday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/saturdayLabel"
@@ -107,7 +122,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_saturday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sundayLabel"
@@ -116,12 +134,16 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_sunday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/daysLabelColor"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
 
         <com.android.calendarview.extensions.CalendarViewPager
             android:id="@+id/calendarViewPager"

@@ -12,8 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:type="one_day_picker"
-        app:eventsEnabled="true" />
+        app:datePicker="true"
+        app:eventsEnabled="true"
+        app:headerColor="@android:color/white"
+        app:headerLabelColor="@color/colorPrimary"
+        app:highlightedDaysLabelsColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectionColor="@color/colorPrimary"
+        app:todayLabelColor="@color/colorPrimary" />
 
 
 </LinearLayout>
