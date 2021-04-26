@@ -120,6 +120,8 @@ public class CalendarPageAdapter extends PagerAdapter {
         // Set day of month as 1
         calendar.set(Calendar.DAY_OF_MONTH, 1);
 
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+
         // Get a number of the first day of the week
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
